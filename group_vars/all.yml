@@ -1,0 +1,31 @@
+---
+# PowerDNS Team members users, groups and SSH keys
+nlnog_groups:
+  - { name: "nlnog", gid: 10000, sudoers: yes }
+
+nlnog_users:
+  "job":
+    comment: "Job Snijders"
+    state: present
+    uid: 10000
+    group: nlnog
+    password: ""
+    authorized_keys: []
+
+  "grizz":
+    comment: "Matt Griswold"
+    state: present
+    uid: 10001
+    group: nlnog
+    password: ""
+    authorized_keys: []
+
+  "lieter":
+    comment: "Pieter Lexis"
+    state: present
+    uid: 10002
+    group: nlnog
+    password: "$6$uRV4D4zXCoF$I5qVxdcoixsY5u3FKLC.YZpDYt/vwACdyI/xT/exCIWBW1qeLScWZOB9xQOwFgtZDr1VKGnKCdo9uCsP4zVam/"
+    authorized_keys:
+      - 'ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEJUWfeP3PFDrbtZHN40ukmId28mr08mxo2qYaHc3FxLQqZ5mimChxe4KcSZWBgdfheRGIMROTVKcMfnsaorVUA= pieter@aardbei.mobile.plexis.eu'
+      - 'ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDFvrscfrTJEq8X8kEk1SeXwrbN2uKUwcdGH2GSegWZoWMmrA5hhKvt0IlXRxdpYEjs4rT19nE35gSIBfF2EfYA= lieter@ananas.home.plexis.eu'

@@ -1,0 +1,28 @@
+---
+
+# Name of the SSHD service
+sshd_service: sshd
+
+# A dictionary containing the Linux Users to create
+# users:
+#   "username":
+#     comment: "FistName LastName"
+#     state: present
+#     uid: 10000
+#     password: "$6$rounds=656000$NCfkw4Q2PNvEKyp/$/IvnieAgG4weQxjR6EbhxWwItPN2TYaWN3hfdSwoz.aZ7r3tI8J6D68PzytG95bh2PLDzgITpBN5FAgrw4XhO1"
+#     authorized_keys:
+#       - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmH+ddcULpp+AA/xBTQXkxDbd7wTZIZMDt2z1Zvjj3KjC2Xyzqh3G6wKzhYhyqGNc2+Vu6cAsbLAyN+FCjA72qR7CmTe8ABWqluft0/eFhaDkKMssMFRP6xSu95GZPJ3rjxkGhE3XqVOao3QhX/GooLs+4pCGRtA78uOihHc0LBOZNJt4yY8SZxYu4G6TdwCiXYlbFVyRlqf3mZLoifoYvBlx/LPg8Sx78ntGlchHaJLlZAcZHHt/3+OaBYeVcMhSVdSTjzrNPQkTdI2l6pFq4MHL6/hMSK99sA6LAkJ5ao2V1wRTahapRUgo1uTHdCE595LygYac76ca2raDJvVo7 test@laptop.local'
+users: { }
+
+# A list containing the Linux Groups to create
+# user_groups:
+#   - { name: somegroup, gid: 10000, sudoers: no }
+# the sudoers configuration grants the sudo permissions to the users within the group
+user_groups: []
+
+# Extra packages to be installed on all the PDNS hosts.
+extra_packages:
+  - vim
+  - wget
+  - rsync
+  - net-tools

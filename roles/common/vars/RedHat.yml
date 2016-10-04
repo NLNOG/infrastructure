@@ -1,0 +1,8 @@
+---
+
+common_role_dependencies:
+  - libselinux-python
+
+common_packages:
+  - tcpdump
+  - bind-utils

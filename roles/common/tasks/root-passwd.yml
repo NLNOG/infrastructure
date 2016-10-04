@@ -1,0 +1,9 @@
+---
+
+- name: Set root password
+  user: name="root" password="{{ root_pw_hash }}"
+  when: root_pw_hash is defined
+
+- name: Disable root password
+  user: name="root" password=""
+  when: root_pw_hash is not defined

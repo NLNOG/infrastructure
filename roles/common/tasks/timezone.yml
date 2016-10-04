@@ -1,0 +1,7 @@
+---
+
+- name: Set timezone to UTC (/etc/localtime)
+  file:
+    name: /etc/localtime
+    src: /usr/share/zoneinfo/UTC
+    state: link
