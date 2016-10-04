@@ -1,0 +1,36 @@
+---
+
+- name: Create the groups
+  group: gid={{ item['gid'] }} name={{ item['name'] }}
+  with_items: "{{ user_groups }}"
+
+- name: Create the users
+  user:
+    name: "{{ item }}"
+    password: "{{ users[item]['password'] }}"
+    comment: "{{ users[item]['comment'] }}"
+    uid: "{{ users[item]['uid'] }}"
+    group: "{{ users[item]['group'] | default('') }}"
+    groups: "{{ users[item]['groups'] | default('') }}"
+    shell: "{{ users[item]['linux_shell'] | default('/bin/bash') }}"
+    state: "{{ users[item]['state'] | default('absent')}}"
+  with_items: "{{ users.keys() }}"
+
+- name: Add the user's authorized_keys
+  authorized_key:
+    user: "{{ item }}"
+    key: "{{ '\n'.join(users[item]['authorized_keys']) }}"
+    exclusive: yes
+  when: users[item]['authorized_keys'] is defined
+  with_items: "{{ users.keys() }}"
+
+- name: Grant sudo permissions to the sudoers groups
+  lineinfile:
+    dest: "/etc/sudoers.d/{{ item['name'] }}"
+    regexp: "^%{{ item['name'] }}"
+    line: "%{{ item['name'] }} ALL=(ALL) ALL"
+    create: yes
+    owner: root
+    group: root
+    mode: 0440
+  with_items: "{{ user_groups | selectattr('sudoers') | list }}"
