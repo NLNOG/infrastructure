@@ -5,6 +5,8 @@
 *.retry
 roles/powerdns.*
 
+vault_passphrase
+
 
 ### Vim ###
 # swap
