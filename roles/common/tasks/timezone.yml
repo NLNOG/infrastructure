@@ -5,3 +5,4 @@
     name: /etc/localtime
     src: /usr/share/zoneinfo/UTC
     state: link
+    force: yes
