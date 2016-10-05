@@ -1,4 +1,6 @@
 ---
+- include: load_vars.yml
+
 # This playbook just provisions the users
 - name: Configure the SSH users, sudo and other common things
   hosts: all
