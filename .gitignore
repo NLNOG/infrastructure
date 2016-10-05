@@ -3,6 +3,7 @@
 
 ### Ansible ###
 *.retry
+roles/powerdns.*
 
 
 ### Vim ###
