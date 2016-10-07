@@ -1,0 +1,4 @@
+- src: https://github.com/PowerDNS/pdns-ansible.git
+  scm: git
+  version: master
+  name: powerdns.pdns

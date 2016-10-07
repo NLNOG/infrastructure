@@ -2,6 +2,7 @@
 
 common_role_dependencies:
   - libselinux-python
+  - sudo
 
 common_packages:
   - tcpdump

@@ -1,0 +1,8 @@
+---
+- name: Load possible secret variables
+  hosts: all
+  tasks:
+    - include_vars: "{{ item }}"
+      with_first_found:
+        - "../secret_vars/{{ ansible_fqdn }}.yml"
+        - "../secret_vars/default.yml"

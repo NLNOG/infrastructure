@@ -1,0 +1,14 @@
+---
+- include: load_vars.yml
+
+- name: Install and configure the PowerDNS Authoritative server
+  hosts: dns-auth
+  become: true
+  become_user: root
+  tags:
+    - auth
+    - dns
+    - pdns
+    - powerdns
+  roles:
+    - { role: powerdns.pdns }

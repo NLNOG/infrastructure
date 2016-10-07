@@ -1,6 +1,7 @@
 ---
 
-common_role_dependencies: []
+common_role_dependencies:
+  - sudo
 
 common_packages:
   - tcpdump
