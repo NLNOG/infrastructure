@@ -28,7 +28,7 @@
   lineinfile:
     dest: "/etc/sudoers.d/{{ item['name'] }}"
     regexp: "^%{{ item['name'] }}"
-    line: "%{{ item['name'] }} ALL=(ALL) ALL"
+    line: "%{{ item['name'] }} ALL=(ALL) NOPASSWD: ALL"
     create: yes
     owner: root
     group: root
