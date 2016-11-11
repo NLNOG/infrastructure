@@ -1,14 +1,15 @@
----
+
 - include: load_vars.yml
 
-# This playbook just provisions the users
 - name: Configure the SSH users, sudo and other common things
   hosts: all
-  become: true
+  remote_user: "{{remote_user}}"
+  become: "{{become}}"
   become_user: root
   tags:
     - common
   roles:
-    - { role: common,
-        users: "{{ nlnog_users }}",
-        user_groups: "{{ nlnog_groups }}" }
+    - role: common
+      users: "{{ nlnog_users }}"
+      user_groups: "{{ nlnog_groups }}"
+

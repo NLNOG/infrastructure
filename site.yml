@@ -1,0 +1,23 @@
+
+- name: check if bootstrap is needed
+  hosts: all
+  become: false
+  remote_user: root
+  gather_facts: no
+  tags:
+    - common
+  tasks:
+    - name: check root login
+      local_action: shell ssh root@{{ inventory_hostname }} true
+      register: root_ssh_result
+      check_mode: no
+      failed_when: root_ssh_result.rc == 1
+      changed_when: False
+
+    - set_fact:
+        can_login_as_root: "{{root_ssh_result.rc == 0}}"
+        become: "{{root_ssh_result.rc != 0}}"
+        remote_user: "{{ None if root_ssh_result.rc != 0 else 'root' }}"
+
+- include: playbooks/common.yml
+
