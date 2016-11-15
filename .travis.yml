@@ -1,0 +1,20 @@
+
+language: python
+python: 2.7
+branches:
+  except:
+    - gh-pages
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get -qq update
+  - python -m pip install -U pip
+  - python -m easy_install -U setuptools
+  - pip install -r Facsimile/requirements.txt
+  - pip install -r Facsimile/requirements-test.txt
+
+script:
+  - ansible-playbook --vault-password-file=/dev/null -i tests/ --syntax-check site.yml 
+
