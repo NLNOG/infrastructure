@@ -13,8 +13,10 @@
       check_mode: no
       failed_when: root_ssh_result.rc == 1
       changed_when: False
+      tags: always
 
-    - set_fact:
+    - name: set remote user
+      set_fact:
         can_login_as_root: "{{root_ssh_result.rc == 0}}"
         become: "{{root_ssh_result.rc != 0}}"
         remote_user: "{{ None if root_ssh_result.rc != 0 else 'root' }}"
@@ -22,6 +24,7 @@
         # set ansible per host variables, can probably get rid of above?
         ansible_become: "{{root_ssh_result.rc != 0}}"
         ansible_ssh_user: "{{ None if root_ssh_result.rc != 0 else 'root' }}"
+      tags: always
 
     - debug: var=root_ssh_result
     - debug: msg="become {{become}}, remote_user {{remote_user}}"
