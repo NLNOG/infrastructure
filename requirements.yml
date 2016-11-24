@@ -2,3 +2,7 @@
   scm: git
   version: master
   name: powerdns.pdns
+- name: 20c.basesys
+  scm: git
+  src: https://github.com/20c/ansible-role-basesys
+  version: master

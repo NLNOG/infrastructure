@@ -7,8 +7,5 @@
   package: name="{{ item }}" state=present
   with_items: "{{ common_role_dependencies }}"
 
-- include: users.yml
-- include: sshd.yml
 - include: root-passwd.yml
-- include: timezone.yml
 - include: extras.yml

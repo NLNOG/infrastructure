@@ -3,13 +3,18 @@
 
 - name: Configure the SSH users, sudo and other common things
   hosts: all
-  remote_user: "{{remote_user}}"
-  become: "{{become}}"
+  remote_user: "{{ remote_user }}"
+  become: "{{ become }}"
   become_user: root
   tags:
     - common
   roles:
     - role: common
-      users: "{{ nlnog_users }}"
-      user_groups: "{{ nlnog_groups }}"
+
+    - role: 20c.basesys
+      basesys_timezone: "{{ timezone }}"
+      basesys_ntp_servers: "{{ ntp_servers }}"
+      basesys_ssh: true
+      basesys_users: "{{ nlnog_users }}"
+      basesys_groups: "{{ nlnog_groups }}"
 

@@ -1,0 +1,34 @@
+ansible:
+  config_file: ansible.cfg
+  playbook: site.yml
+  requirements_file: requirements.yml
+  timeout: 30
+  vault-password-file: /dev/null
+
+docker:
+  containers:
+  - name: infra-centos-7
+    ansible_groups:
+      - rhel
+    image: milcom/centos7-systemd
+    image_version: latest
+    privileged: True
+  - name: infra-debian-8
+    ansible_groups:
+      - debian
+    image: maint/debian-systemd
+    image_version: latest
+    privileged: True
+# disabled - selinux makes useradd fail
+#  - name: infra-ubuntu-12.04
+#    ansible_groups:
+#      - ubuntu
+##    image: ubuntu
+#    image_version: 12.04
+#    privileged: True
+  - name: infra-ubuntu-16.04
+    ansible_groups:
+      - ubuntu
+    image: ubuntu
+    image_version: 16.04
+    privileged: True
