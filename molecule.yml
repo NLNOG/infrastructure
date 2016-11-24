@@ -1,4 +1,6 @@
 molecule:
+  dependency:
+    requirements_file: requirements.yml
   # don't lint third party roles
   ignore_paths:
     - galaxy-roles
@@ -7,7 +9,6 @@ molecule:
 ansible:
   config_file: ansible.cfg
   playbook: site.yml
-  requirements_file: requirements.yml
   timeout: 30
   vault-password-file: /dev/null
 
