@@ -8,7 +8,7 @@
     - common
   tasks:
     - name: check root login
-      local_action: shell ssh root@{{ ansible_ssh_host }} true
+      local_action: command ssh -o StrictHostKeyChecking=no root@{{ ansible_ssh_host }} true
       register: root_ssh_result
       check_mode: no
       failed_when: root_ssh_result.rc == 1
@@ -30,4 +30,3 @@
     - debug: msg="become {{become}}, remote_user {{remote_user}}"
 
 - include: playbooks/common.yml
-

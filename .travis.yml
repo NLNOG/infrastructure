@@ -16,5 +16,4 @@ before_install:
   - pip install -r Facsimile/requirements-test.txt
 
 script:
-  - ansible-playbook --vault-password-file=/dev/null -i tests/ --syntax-check site.yml 
-
+  - ansible-playbook --vault-password-file=/dev/null -i tests/ --syntax-check site.yml

@@ -1,3 +1,9 @@
+molecule:
+  # don't lint third party roles
+  ignore_paths:
+    - galaxy-roles
+    - .molecule
+
 ansible:
   config_file: ansible.cfg
   playbook: site.yml

@@ -32,4 +32,3 @@ nlnog_users:
       key: "{{ lookup('file', 'files/keys/lieter/main.pub') }}"
     groups:
       - sudo
-

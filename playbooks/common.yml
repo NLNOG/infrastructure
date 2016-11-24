@@ -17,4 +17,3 @@
       basesys_ssh: true
       basesys_users: "{{ nlnog_users }}"
       basesys_groups: "{{ nlnog_groups }}"
-
