@@ -16,4 +16,7 @@ before_install:
   - pip install -r Facsimile/requirements-test.txt
 
 script:
+  - molecule --version
+  - ansible --version
   - ansible-playbook --vault-password-file=/dev/null -i tests/ --syntax-check site.yml
+  - molecule --debug test
