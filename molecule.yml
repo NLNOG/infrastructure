@@ -5,6 +5,8 @@ molecule:
   ignore_paths:
     - galaxy-roles
     - .molecule
+  raw_ssh_args:
+    - -o StrictHostKeyChecking=false
 
 ansible:
   config_file: NOansible.cfg
