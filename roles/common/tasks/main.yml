@@ -7,5 +7,17 @@
   package: name="{{ item }}" state=present
   with_items: "{{ common_role_dependencies }}"
 
+- name: check that sudo does not require a tty
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^Defaults\s+requiretty'
+    state: absent
+
+- name: check that sudo does not require a tty
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^Defaults\s+!visiblepw'
+    state: absent
+
 - include: root-passwd.yml
 - include: extras.yml
