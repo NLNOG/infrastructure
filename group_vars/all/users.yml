@@ -33,7 +33,7 @@ nlnog_users:
     groups:
       - sudo
 
-- name: martin
+  - name: martin
     state: present
     uid: 10003
     comment: "Martin Pels"
