@@ -8,7 +8,7 @@
     - common
   tasks:
     - name: check root login
-      local_action: command ssh -o StrictHostKeyChecking=no root@{{ ansible_ssh_host }} true
+      local_action: command ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=yes root@{{ ansible_ssh_host }} true
       register: root_ssh_result
       check_mode: no
       failed_when: root_ssh_result.rc == 1
