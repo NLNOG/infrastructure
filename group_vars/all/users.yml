@@ -32,3 +32,12 @@ nlnog_users:
       key: "{{ lookup('file', 'files/keys/lieter/main.pub') }}"
     groups:
       - sudo
+
+- name: martin
+    state: present
+    uid: 10003
+    comment: "Martin Pels"
+    authorized_key:
+      key: "{{ lookup('file', 'files/keys/martin/main.pub') }}"
+    groups:
+      - sudo
