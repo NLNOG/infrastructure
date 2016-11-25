@@ -13,11 +13,5 @@
     regexp: '^Defaults\s+requiretty'
     state: absent
 
-- name: check that sudo does not require a tty
-  lineinfile:
-    dest: /etc/sudoers
-    regexp: '^Defaults\s+!visiblepw'
-    state: absent
-
 - include: root-passwd.yml
 - include: extras.yml
