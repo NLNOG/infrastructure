@@ -1,0 +1,39 @@
+
+- name: check if bootstrap is needed
+  hosts: all
+  become: false
+  remote_user: root
+  gather_facts: no
+  tags:
+    - common
+  tasks:
+    - name: try root login to disable sudo requiretty (hack for molecule)
+      lineinfile:
+        dest: /etc/sudoers
+        regexp: '^Defaults\s+requiretty'
+        state: absent
+      failed_when: false
+
+    - name: check root login
+      local_action: command ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=yes root@{{ ansible_ssh_host }} true
+      register: root_ssh_result
+      check_mode: no
+      failed_when: root_ssh_result.rc == 1
+      changed_when: False
+      tags: always
+
+    - name: set remote user
+      set_fact:
+        can_login_as_root: "{{root_ssh_result.rc == 0}}"
+        become: "{{root_ssh_result.rc != 0}}"
+        remote_user: "{{ None if root_ssh_result.rc != 0 else 'root' }}"
+
+        # set ansible per host variables, can probably get rid of above?
+        ansible_become: "{{root_ssh_result.rc != 0}}"
+        ansible_ssh_user: "{{ None if root_ssh_result.rc != 0 else 'root' }}"
+      tags: always
+
+    - debug: var=root_ssh_result
+    - debug: msg="become {{become}}, remote_user {{remote_user}}"
+
+- include: playbooks/common.yml

@@ -1,0 +1,3 @@
+
+basesys_ntp_server_options:
+  - iburst

@@ -1,5 +1,15 @@
 
-[servers]
-ans0.am1.dev.infra.nlnog.net
-ans1.am2.dev.infra.nlnog.net
+[centos]
+ans0.am1.dev.infra.nlnog.net ansible_ssh_host=185.107.224.17
+
+[debian]
+ans1.am2.dev.infra.nlnog.net ansible_ssh_host=185.107.213.208
+
+[ubuntu]
+ans2.am1.dev.infra.nlnog.net ansible_ssh_host=185.107.225.211
+
+[servers:children]
+centos
+debian
+ubuntu
 

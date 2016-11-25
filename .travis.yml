@@ -1,0 +1,25 @@
+
+language: python
+python: 2.7
+branches:
+  except:
+    - gh-pages
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get -qq update
+  - python -m pip install -U pip
+  - python -m easy_install -U setuptools
+
+install:
+  - pip install -r Facsimile/requirements.txt
+  - pip install -r Facsimile/requirements-test.txt
+  - ansible-galaxy install -f -r requirements.yml
+
+script:
+  - molecule --version
+  - ansible --version
+  - ansible-playbook --vault-password-file=/dev/null -i tests/ --syntax-check site.yml
+  - molecule --debug test

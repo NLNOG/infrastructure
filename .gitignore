@@ -3,7 +3,9 @@
 
 ### Ansible ###
 *.retry
+.molecule/
 roles/powerdns.*
+galaxy-roles/
 
 vault_passphrase
 

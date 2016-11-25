@@ -1,0 +1,34 @@
+
+nlnog_groups:
+  - name: "sudo"
+    system: yes
+    sudo: nopasswd
+
+nlnog_users:
+  - name: grizz
+    state: present
+    uid: 10001
+    comment: Matt Griswold
+    authorized_key:
+      key: "{{ lookup('file', 'files/keys/grizz/main.pub') }}"
+      key_options: 'from="204.130.133.144,204.130.133.192"'
+    groups:
+      - sudo
+
+  - name: job
+    state: present
+    uid: 10000
+    comment: "Job Snijders"
+    authorized_key:
+      key: "{{ lookup('file', 'files/keys/job/main.pub') }}"
+    groups:
+      - sudo
+
+  - name: lieter
+    state: present
+    uid: 10002
+    comment: "Pieter Lexis"
+    authorized_key:
+      key: "{{ lookup('file', 'files/keys/lieter/main.pub') }}"
+    groups:
+      - sudo
