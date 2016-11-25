@@ -7,7 +7,7 @@ molecule:
     - .molecule
 
 ansible:
-  config_file: ansible.cfg
+  config_file: NOansible.cfg
   playbook: site.yml
   timeout: 30
   vault-password-file: /dev/null
