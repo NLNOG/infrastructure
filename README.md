@@ -13,4 +13,4 @@ These encrypted files should automatically be decrypted.
 `gpg -d vault_passphrase.gpg | gpg -e --trust-model always -r "KEYID1" -r "KEYID2" (etc..) -o vault_passphrase.gpg.new; mv vault_passphrase.gpg.new vault_passphrase.gpg`
 
 ### Adding an encrypted file
-`ansible-vault create secret_var/$HOSTNAME.yml`
+`ansible-vault create secret_vars/$HOSTNAME.yml`

@@ -3,6 +3,16 @@ The PowerDNS installation tracks the 4.0.X branch of the PowerDNS Authoritative 
 
 For now, the zone can be edited by logging into the machine and running `sudo pdnsutil edit-zone infra.nlnog.net`. Don't forget to bump the SOA serial!
 
+Or use alias:
+```sh
+alias nlnogdns="ssh -t ns1.am1.dns.infra.nlnog.net '\
+sudo -E pdnsutil edit-zone infra.nlnog.net;\
+sudo -E pdnsutil increase-serial infra.nlnog.net;\
+sudo -E pdns_control notify infra.nlnog.net\
+'
+"
+```
+
 ## Manually performed steps
 After installing these commands have been run by hand:
 
