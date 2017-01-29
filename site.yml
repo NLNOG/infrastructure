@@ -53,6 +53,22 @@
         service: https
         permanent: true
         state: enabled
+    - name: create gitlab users (doesn't work)
+      gitlab_user:
+        server_url: "{{ gitlab_external_url }}"
+        login_token: "{{ gitlab_root_token }}"
+        username: "{{ item.name }}"
+        password: None
+        name: "{{ item.comment | d(item.name) }}"
+        email: "{{ item.email }}"
+        state: "{{ item.state | d(omit) }}"
+
+        sshkey_name: "infra"
+        sshkey_file: "{{ item.authorized_key.key }}"
+      with_items: "{{ nlnog_users }}"
+      delegate_to: localhost
+      tags: gitlab
+
   roles:
     - role: 20c.letsencrypt
     - role: 20c.gitlab

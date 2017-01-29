@@ -6,6 +6,7 @@ nlnog_groups:
 
 nlnog_users:
   - name: grizz
+    email: grizz@20c.com
     state: present
     uid: 10001
     comment: Matt Griswold
@@ -16,6 +17,7 @@ nlnog_users:
       - sudo
 
   - name: job
+    email: job@instituut.net
     state: present
     uid: 10000
     comment: "Job Snijders"
@@ -25,6 +27,7 @@ nlnog_users:
       - sudo
 
   - name: lieter
+    email: pieter@plexis.eu
     state: present
     uid: 10002
     comment: "Pieter Lexis"
@@ -34,6 +37,7 @@ nlnog_users:
       - sudo
 
   - name: martin
+    email: martin@rodecker.nl
     state: present
     uid: 10003
     comment: "Martin Pels"
