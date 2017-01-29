@@ -7,12 +7,12 @@
   tags:
     - common
   tasks:
-    - name: try root login to disable sudo requiretty (hack for molecule)
-      lineinfile:
-        dest: /etc/sudoers
-        regexp: '^Defaults\s+requiretty'
-        state: absent
-      failed_when: false
+#    - name: try root login to disable sudo requiretty (hack for molecule)
+#      lineinfile:
+#        dest: /etc/sudoers
+#        regexp: '^Defaults\s+requiretty'
+#        state: absent
+#      failed_when: false
 
     - name: check root login
       local_action: command ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMode=yes root@{{ ansible_ssh_host }} true
@@ -34,6 +34,25 @@
       tags: always
 
     - debug: var=root_ssh_result
-    - debug: msg="become {{become}}, remote_user {{remote_user}}"
+    - debug:
+        msg: "become {{become}}, remote_user {{remote_user}}"
 
 - include: playbooks/common.yml
+
+# git.nlnog.org
+- hosts: gitlab
+  remote_user: root
+  tasks:
+    - name: add http firewall rules
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+    - name: add https firewall rules
+      firewalld:
+        service: https
+        permanent: true
+        state: enabled
+  roles:
+    - role: 20c.letsencrypt
+    - role: 20c.gitlab
