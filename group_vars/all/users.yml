@@ -27,7 +27,7 @@ nlnog_users:
       - sudo
 
   - name: lieter
-    email: pieter@plexis.eu
+    email: pieter+nlnoginfra@plexis.eu
     state: present
     uid: 10002
     comment: "Pieter Lexis"
