@@ -26,4 +26,3 @@ letsencrypt_certs:
     email: "{{ gitlab_external_email }}"
     sans:
       - gitlab0.am2.infra.nlnog.net
-
