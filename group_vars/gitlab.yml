@@ -1,0 +1,28 @@
+
+gitlab_enabled: true
+gitlab_external_domain: git.nlnog.net
+gitlab_external_email: infrastructure@nlnog.net
+gitlab_package_name: gitlab-ce
+
+gitlab_repo_disk: false
+
+gitlab_email_display_name: NLNOG GitLab
+
+gitlab_omniauth_enabled: true
+gitlab_allow_single_sign_on: true
+gitlab_omniauth_block_auto_created_users: true
+gitlab_omniauth_allow_single_sign_on: []
+
+net_acl:
+  - name: public access
+    stateful: true
+    ports:
+      - 80
+      - 443
+
+letsencrypt_install_dir: /etc/pki/tls/certs
+letsencrypt_certs:
+  - domain: "{{ gitlab_external_domain }}"
+    email: "{{ gitlab_external_email }}"
+    sans:
+      - gitlab0.am2.infra.nlnog.net

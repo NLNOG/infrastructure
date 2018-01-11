@@ -6,3 +6,11 @@
   scm: git
   src: https://github.com/20c/ansible-role-basesys
   version: master
+- name: 20c.gitlab
+  scm: git
+  src: https://github.com/20c/ansible-role-gitlab
+  version: master
+- name: 20c.letsencrypt
+  scm: git
+  src: https://github.com/20c/ansible-role-letsencrypt.git
+  version: master

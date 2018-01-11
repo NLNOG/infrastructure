@@ -1,4 +1,7 @@
 
+## Getting Started
+
+
 ### Locations
 
 am1: pcextreme Amsterdam East

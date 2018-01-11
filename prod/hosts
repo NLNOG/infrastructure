@@ -2,4 +2,13 @@
 dns-auth
 
 [dns-auth]
-ns1.am1.dns.infra.nlnog.net ansible_ssh_host=185.107.213.78
+ns1.am1.dns.infra.nlnog.net
+
+[gitlab]
+gitlab0.am2.infra.nlnog.net
+
+[irrexplorer]
+irrexplorer0.am2.infra.nlnog.net
+
+[peeringdb]
+pcvoting0.peeringdb.infra.nlnog.net
