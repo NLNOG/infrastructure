@@ -41,3 +41,12 @@ nlnog_users:
       key: "{{ lookup('file', 'files/keys/martin/main.pub') }}"
     groups:
       - sudo
+
+  - name: arjen
+    state: present
+    uid: 10004
+    comment: "Arjen Zonneveld"
+    authorized_key:
+      key: "{{ lookup('file', 'files/keys/arjen/main.pub') }}"
+    groups:
+      - sudo
